@@ -1,0 +1,46 @@
+<Schema name="meterologie">
+  <Cube name="myCube" visible="true" cache="true" enabled="true">
+    <Table name="fait_meteo" alias="">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" name="region">
+      <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true" primaryKey="id" primaryKeyTable="dimension_region">
+        <Table name="dimension_region" alias="">
+        </Table>
+        <Level name="nom_region" visible="true" table="dimension_region" column="nom" uniqueMembers="false">
+        </Level>
+        <Level name="nord" visible="true" table="dimension_region" column="nord" uniqueMembers="false">
+        </Level>
+        <Level name="east" visible="true" table="dimension_region" column="east" uniqueMembers="false">
+        </Level>
+        <Level name="longitude" visible="true" table="dimension_region" column="longitude" uniqueMembers="false">
+        </Level>
+        <Level name="latitude" visible="true" table="dimension_region" column="latitude" uniqueMembers="false">
+        </Level>
+        <Level name="amsl" visible="true" table="dimension_region" column="amsl" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id" name="temps">
+      <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true" primaryKey="id" primaryKeyTable="dimension_temps">
+        <Table name="dimension_temps">
+        </Table>
+        <Level name="annee" visible="true" table="dimension_temps" column="annee" uniqueMembers="false">
+        </Level>
+        <Level name="trimestre" visible="true" table="dimension_temps" column="trimestre" uniqueMembers="false">
+        </Level>
+        <Level name="mois" visible="true" table="dimension_temps" column="mois" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="t_min" column="temp_min" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="t_max" column="temp_max" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="af_days" column="af_days" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="rain" column="rain" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="sun" column="sun" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
